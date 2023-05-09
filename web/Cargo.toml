@@ -3,8 +3,18 @@ name = "web"
 version = "0.1.0"
 edition = "2021"
 authors = ["Mac Lawson <mlawson07@protonmail.com>"]
-description = "A short description of my package"
+description = "The Rust web Library is a small, simple library for fetching the contents of a URL and returning them as a string."
 documentation = "https://github.com/mac-lawson/web/"
+homepage = "https://github.com/mac-lawson/web"
+license = "GPL-3.0"
+license-file = "LICENSE"
+keywords = ["http", "web", "web requests"]
+categories = ["web-programming::http-client", "web-programming"]
+
+
+
+
+
 
 
 

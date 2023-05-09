@@ -1,7 +1,8 @@
 # Rust `weblib` Library
 The Rust `weblib` Library is a small, simple library for fetching the contents of a URL and returning them as a string.
 <br>
-![GitHub](https://img.shields.io/github/license/mac-lawson/web)![GitHub commit activity](https://img.shields.io/github/commit-activity/y/mac-lawson/web)
+![GitHub](https://img.shields.io/github/license/mac-lawson/web)![GitHub commit activity](https://img.shields.io/github/commit-activity/y/mac-lawson/web)[![Documentation Status](https://readthedocs.org/projects/weblib-rust/badge/?version=latest)](https://weblib-rust.readthedocs.io/en/latest/?badge=latest)
+
 
 ### Installation:
 You can add this library as a dependency to your Rust project by adding the following line to your Cargo.toml file:

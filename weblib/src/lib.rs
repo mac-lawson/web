@@ -16,7 +16,7 @@ use std::error::Error;
 ///
 /// ```
 /// let url = "https://httpbin.org/ip";
-/// match web::text(url) {
+/// match weblib::text(url) {
 ///     Ok(resp) => println!("{}", resp),
 ///     Err(e) => panic!("Error: {}", e),
 /// }
@@ -43,7 +43,7 @@ pub fn text(url: &str) -> Result<String, Box<dyn Error>> {
 /// ```
 /// let url = "https://httpbin.org/get";
 /// let query = "key1=value1&key2=value2";
-/// match web::query(url, query) {
+/// match weblib::query(url, query) {
 ///     Ok(resp) => println!("{}", resp),
 ///     Err(e) => panic!("Error: {}", e),
 /// }

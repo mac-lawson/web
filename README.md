@@ -15,7 +15,7 @@ web = "0.1.0"
 Here is an example of how to use the text() function:
 ```rust
 let url = "https://httpbin.org/ip";
-match web::text(url) {
+match weblib::text(url) {
     Ok(resp) => println!("{}", resp),
     Err(e) => panic!("Error: {}", e),
 }
@@ -24,7 +24,7 @@ And here is an example of how to use the query() function:
 ```rust
 let url = "https://httpbin.org/get";
 let query_string = "key1=value1&key2=value2";
-match web::query(url, query_string) {
+match weblib::query(url, query_string) {
     Ok(resp) => println!("{}", resp),
     Err(e) => panic!("Error: {}", e),
 }

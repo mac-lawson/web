@@ -8,7 +8,7 @@ documentation = "https://github.com/mac-lawson/web/"
 homepage = "https://github.com/mac-lawson/web"
 license = "GPL-3.0"
 license-file = "../LICENSE"
-keywords = ["http", "web", "web requests"]
+keywords = ["http", "web"]
 categories = ["web-programming::http-client", "web-programming"]
 
 

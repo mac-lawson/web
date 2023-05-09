@@ -1,6 +1,7 @@
 # Rust `web` Library
 The Rust `web` Library is a small, simple library for fetching the contents of a URL and returning them as a string.
-
+<br>
+![GitHub](https://img.shields.io/github/license/mac-lawson/web)![GitHub commit activity](https://img.shields.io/github/commit-activity/y/mac-lawson/web)
 
 ### Installation:
 You can add this library as a dependency to your Rust project by adding the following line to your Cargo.toml file:

@@ -75,4 +75,3 @@ mod tests {
         assert!(response.contains("\"key2\": \"value2\""));
     }
 }
-

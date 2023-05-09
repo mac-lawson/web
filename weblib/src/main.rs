@@ -1,4 +1,4 @@
-use web::text;
+use weblib::text;
 
 
 fn main() {
@@ -8,7 +8,7 @@ fn main() {
     }
     let url = "https://httpbin.org/get";
     let query_string = "key1=value1&key2=value2";
-    match web::query(url, query_string) {
+    match weblib::query(url, query_string) {
      Ok(resp) => println!("{}", resp),
      Err(e) => panic!("Error: {}", e),
  }

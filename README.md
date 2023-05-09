@@ -7,7 +7,7 @@ The Rust `weblib` Library is a small, simple library for fetching the contents o
 You can add this library as a dependency to your Rust project by adding the following line to your Cargo.toml file:
 ```rust
 [dependencies]
-web = "0.1.0"
+web = "0.1.1"
 ```
 
 

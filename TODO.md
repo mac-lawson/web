@@ -1,4 +1,4 @@
-- Add support for POST requests: support making HTTP POST requests to a URL with a given body. This can be done by using the reqwest::blocking::Client API to create a POST request with the specified body, and then making the request with client.execute().
+- Add support for POST requests: support making HTTP POST requests to a URL with a given body. This can be done by using the reqwest::blocking::Client API to create a POST request with the specified body, and then making the request with client.execute(). (DONE)
 
 - Add support for handling cookies: add support for handling cookies. This can be done by using the reqwest::blocking::Client API to create a CookieJar, adding cookies to it, and then including the CookieJar in subsequent requests.
 

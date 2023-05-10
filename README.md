@@ -8,12 +8,12 @@ The Rust `weblib` Library is a small, simple library for fetching the contents o
 You can add this library as a dependency to your Rust project by adding the following line to your Cargo.toml file:
 ```rust
 [dependencies]
-web = "0.1.1"
+web = "0.1.2"
 ```
 
 
 ### Usage:
-Here is an example of how to use the text() function:
+Here is an example of how to use the `text` function:
 ```rust
 let url = "https://httpbin.org/ip";
 match weblib::text(url) {
@@ -21,7 +21,7 @@ match weblib::text(url) {
     Err(e) => panic!("Error: {}", e),
 }
 ```
-And here is an example of how to use the query() function:
+Here is an example of how to use the `query` function:
 ```rust
 let url = "https://httpbin.org/get";
 let query_string = "key1=value1&key2=value2";
@@ -29,6 +29,15 @@ match weblib::query(url, query_string) {
     Ok(resp) => println!("{}", resp),
     Err(e) => panic!("Error: {}", e),
 }
+```
+Here is an example of how to use the `post` function:
+```rust
+  let url = "https://httpbin.org/post";
+  let data = "key1=value1&key2=value2";
+  match weblib::post(url, data) {
+      Ok(resp) => println!("{}", resp),
+      Err(e) => panic!("Error: {}", e),
+  }
 ```
 
 ### Running tests:

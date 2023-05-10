@@ -1,6 +1,6 @@
 [package]
 name = "weblib"
-version = "0.1.2"
+version = "0.1.3"
 edition = "2021"
 authors = ["Mac Lawson <mlawson07@protonmail.com>"]
 description = "The Rust weblib Library is a small, simple library for fetching the contents of a URL and returning them as a string."

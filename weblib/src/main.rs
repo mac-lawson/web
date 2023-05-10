@@ -12,4 +12,10 @@ fn main() {
      Ok(resp) => println!("{}", resp),
      Err(e) => panic!("Error: {}", e),
  }
+  let url = "https://httpbin.org/post";
+  let data = "key1=value1&key2=value2";
+  match weblib::post(url, data) {
+      Ok(resp) => println!("{}", resp),
+      Err(e) => panic!("Error: {}", e),
+  }
 }

@@ -19,3 +19,4 @@ categories = ["web-programming::http-client", "web-programming"]
 
 [dependencies]
 reqwest = {version = "0.11.17", features = ["blocking"] }
+

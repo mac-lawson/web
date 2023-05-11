@@ -1,4 +1,4 @@
-- Add support for custom headers in requests
+## 0.1.4
 - Add support for HTTPS with custom certificates
 -  Add support for HTTP authentication - DONE basic_auth method
 - Add support for handling different types of response data (e.g. JSON, XML)

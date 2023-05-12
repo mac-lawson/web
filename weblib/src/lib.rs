@@ -22,8 +22,10 @@
 //!
 //! This library was created by Mac Lawson.
 use reqwest::blocking::get;
+use reqwest::{RequestBuilder, Error};
 use reqwest::blocking::{Client, Response};
-use std::error::Error;
+use std::error::Error as OtherError;
+use std::time::Duration;
 
 
 /// Fetches the contents of a URL and returns them as a `String`.
@@ -46,7 +48,7 @@ use std::error::Error;
 ///     Err(e) => panic!("Error: {}", e),
 /// }
 /// ```
-pub fn text(url: &str) -> Result<String, Box<dyn Error>> {
+pub fn text(url: &str) -> Result<String, Box<dyn OtherError>> {
     let resp = get(url)?.text()?;
     Ok(resp)
 }
@@ -73,7 +75,7 @@ pub fn text(url: &str) -> Result<String, Box<dyn Error>> {
 ///     Err(e) => panic!("Error: {}", e),
 /// }
 /// ```
-pub fn query(url: &str, query_string: &str) -> Result<String, Box<dyn Error>> {
+pub fn query(url: &str, query_string: &str) -> Result<String, Box<dyn OtherError>> {
     let url_with_query_string = format!("{}?{}", url, query_string);
     let resp = get(&url_with_query_string)?.text()?;
     Ok(resp)
@@ -102,7 +104,7 @@ pub fn query(url: &str, query_string: &str) -> Result<String, Box<dyn Error>> {
 ///     Err(e) => panic!("Error: {}", e),
 /// }
 /// ```
-pub fn post(url: &str, data: &str) -> Result<String, Box<dyn Error>> {
+pub fn post(url: &str, data: &str) -> Result<String, Box<dyn OtherError>> {
     let client = Client::new();
     let resp = client.post(url).body(data.to_string()).send()?;
     let body = resp.text()?;
@@ -131,7 +133,7 @@ pub fn post(url: &str, data: &str) -> Result<String, Box<dyn Error>> {
 ///     Err(e) => panic!("Error: {}", e),
 /// }
 /// ```
-pub fn basic_auth(url: &str, username: &str, password: &str) -> Result<String, Box<dyn Error>> {
+pub fn basic_auth(url: &str, username: &str, password: &str) -> Result<String, Box<dyn OtherError>> {
     let client = Client::new();
     let resp = client
         .request(reqwest::Method::GET, url)
@@ -139,6 +141,52 @@ pub fn basic_auth(url: &str, username: &str, password: &str) -> Result<String, B
         .send()?;
     let body = resp.text()?;
     Ok(body)
+}
+/// Send a request to the specified URL with retries and a timeout
+///
+/// # Arguments
+///
+/// * url - A string slice that holds the URL to be requested.
+/// * retries - The number of retries to perform in case of a request error.
+/// * timeout - The duration after which the request should timeout if it is not successful.
+///
+/// # Returns
+///
+/// * Result<Response, Error> - A Result type that holds the Response object on success or an Error object on failure.
+///
+/// # Examples
+///
+/// 
+/// use std::time::Duration; 
+/// use weblib::request_with_retries; 
+/// let url = "https://example.com";
+/// let retries = 3; 
+/// let timeout = Duration::from_secs(10);
+/// match request_with_retries(url, retries, timeout) { 
+/// Ok(response) => println!("Response: {:?}", response), 
+/// Err(e) => println!("Error: {:?}", e), 
+/// } 
+///
+pub fn request_with_retries(
+    url: &str,
+    retries: usize,
+    timeout: Duration,
+) -> Result<Response, Error> {
+    let client = Client::builder()
+        .timeout(timeout)
+        .build()
+        .unwrap();
+
+    let mut response = client.get(url).send();
+
+    for _ in 1..retries {
+        match response {
+            Ok(res) => return Ok(res),
+            Err(e) => response = client.get(url).send(),
+        }
+    }
+
+    response
 }
 
 
@@ -176,6 +224,15 @@ mod tests {
         let password = "passwd";
         let _response = basic_auth(url, username, password);
     }
+    #[test]
+    fn test_send_request_with_retries_compiles() {
+        let url = "https://example.com";
+        let retries = 3;
+        let timeout = Duration::from_secs(30);
+    
+        let _result = request_with_retries(url, retries, timeout);
+    }
+    
     
     
 

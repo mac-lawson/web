@@ -18,7 +18,7 @@ fn main() {
 //       Ok(resp) => println!("{}", resp),
 //       Err(e) => panic!("Error: {}", e),
 //   }
-    authtester();
+    retrytester();
 }
 
 fn testText() {
@@ -33,4 +33,16 @@ fn authtester() {
      Ok(resp) => println!("{}", resp),
      Err(e) => panic!("Error: {}", e),
  }
+}
+
+fn retrytester() {
+  use std::time::Duration; 
+  use weblib::request_with_retries; 
+  let url = "https://example.com";
+  let retries = 3; 
+  let timeout = Duration::from_secs(10);
+  match request_with_retries(url, retries, timeout) { 
+  Ok(response) => println!("Response: {:?}", response), 
+  Err(e) => println!("Error: {:?}", e), 
+  } 
 }
